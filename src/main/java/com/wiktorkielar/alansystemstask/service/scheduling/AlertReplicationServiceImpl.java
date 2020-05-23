@@ -19,12 +19,14 @@ import java.util.stream.Collectors;
 public class AlertReplicationServiceImpl implements AlertReplicationService {
 
     private static final Logger logger = LoggerFactory.getLogger(AlertReplicationServiceImpl.class);
-
-    @Autowired
     private AlertSourceRepository alertSourceRepository;
+    private AlertDestinationRepository alertDestinationRepository;
 
     @Autowired
-    private AlertDestinationRepository alertDestinationRepository;
+    public AlertReplicationServiceImpl(AlertSourceRepository alertSourceRepository, AlertDestinationRepository alertDestinationRepository) {
+        this.alertSourceRepository = alertSourceRepository;
+        this.alertDestinationRepository = alertDestinationRepository;
+    }
 
     @Override
     @Scheduled(fixedDelay = 5000)

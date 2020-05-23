@@ -17,11 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "${alertcontroller.requestmapping.value}")
 public class AlertController {
 
-    @Autowired
     private AlertMainService alertMainService;
 
+    @Autowired
+    public AlertController(AlertMainService alertMainService) {
+        this.alertMainService = alertMainService;
+    }
+
     @PostMapping
-    public ResponseEntity<AlertRequest> createAlert(@RequestBody AlertRequest alertRequest) {
+    public ResponseEntity createAlert(@RequestBody AlertRequest alertRequest) {
 
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);

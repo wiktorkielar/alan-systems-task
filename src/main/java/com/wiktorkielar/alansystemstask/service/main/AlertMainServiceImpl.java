@@ -15,9 +15,12 @@ import org.springframework.stereotype.Service;
 public class AlertMainServiceImpl implements AlertMainService {
 
     private static final Logger logger = LoggerFactory.getLogger(AlertMainServiceImpl.class);
+    private AlertSourceRepository alertSourceRepository;
 
     @Autowired
-    private AlertSourceRepository alertSourceRepository;
+    public AlertMainServiceImpl(AlertSourceRepository alertSourceRepository) {
+        this.alertSourceRepository = alertSourceRepository;
+    }
 
     @Override
     public AlertDto create(AlertDto requestAlertDto) {
