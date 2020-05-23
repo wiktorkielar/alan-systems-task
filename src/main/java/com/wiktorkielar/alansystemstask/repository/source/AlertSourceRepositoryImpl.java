@@ -10,8 +10,11 @@ import java.util.stream.Collectors;
 @Component
 public class AlertSourceRepositoryImpl implements AlertSourceRepository {
 
-    //TO BE CHANGED
-    public static List<AlertEntity> alertEntityList = new LinkedList<>();
+    private static List<AlertEntity> alertEntityList = new LinkedList<>();
+
+    public static List<AlertEntity> getAlertEntityList() {
+        return alertEntityList;
+    }
 
     @Override
     public AlertEntity createAlert(AlertEntity alertEntity) {

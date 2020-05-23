@@ -9,8 +9,11 @@ import java.util.List;
 @Component
 public class AlertDestinationRepositoryImpl implements AlertDestinationRepository {
 
-    //TO BE CHANGED
-    public static List<AlertEntity> alertEntityList = new LinkedList<>();
+    private static List<AlertEntity> alertEntityList = new LinkedList<>();
+
+    public static List<AlertEntity> getAlertEntityList() {
+        return alertEntityList;
+    }
 
     @Override
     public List<AlertEntity> createAlerts(List<AlertEntity> sourceAlertEntityList) {
