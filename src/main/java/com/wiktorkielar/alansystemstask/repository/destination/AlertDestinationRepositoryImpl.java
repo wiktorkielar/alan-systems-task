@@ -9,17 +9,18 @@ import java.util.List;
 @Component
 public class AlertDestinationRepositoryImpl implements AlertDestinationRepository {
 
-    private static List<AlertEntity> alertEntityList = new LinkedList<>();
+    private static List<AlertEntity> alertEntities = new LinkedList<>();
 
-    public static List<AlertEntity> getAlertEntityList() {
-        return alertEntityList;
+    @Override
+    public List<AlertEntity> getAlertEntities() {
+        return alertEntities;
     }
 
     @Override
-    public List<AlertEntity> createAlerts(List<AlertEntity> sourceAlertEntityList) {
+    public List<AlertEntity> createAlerts(List<AlertEntity> sourceAlertEntities) {
 
-       alertEntityList.addAll(sourceAlertEntityList);
+        alertEntities.addAll(sourceAlertEntities);
 
-       return alertEntityList;
+        return alertEntities;
     }
 }

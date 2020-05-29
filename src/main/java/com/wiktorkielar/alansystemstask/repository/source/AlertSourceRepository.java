@@ -11,4 +11,6 @@ public interface AlertSourceRepository {
     List<AlertEntity> updateAlerts(List<AlertEntity> alertEntities);
 
     List<AlertEntity> findNotReplicatedAlerts();
+
+    List<AlertEntity> getAlertEntities();
 }

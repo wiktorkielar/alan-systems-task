@@ -1,7 +1,7 @@
 package com.wiktorkielar.alansystemstask.service.main;
 
-import com.wiktorkielar.alansystemstask.model.AlertDto;
+import com.wiktorkielar.alansystemstask.model.AlertEntity;
 
 public interface AlertMainService {
-    AlertDto create(AlertDto requestAlertDto);
+    AlertEntity create(AlertEntity alertEntity);
 }

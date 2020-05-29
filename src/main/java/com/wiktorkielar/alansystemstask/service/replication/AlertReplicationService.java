@@ -1,4 +1,4 @@
-package com.wiktorkielar.alansystemstask.service.scheduling;
+package com.wiktorkielar.alansystemstask.service.replication;
 
 public interface AlertReplicationService {
     void replicateAlerts();

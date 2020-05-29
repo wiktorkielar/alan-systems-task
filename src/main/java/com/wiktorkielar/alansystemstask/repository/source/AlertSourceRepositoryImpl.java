@@ -10,41 +10,42 @@ import java.util.stream.Collectors;
 @Component
 public class AlertSourceRepositoryImpl implements AlertSourceRepository {
 
-    private static List<AlertEntity> alertEntityList = new LinkedList<>();
+    private static List<AlertEntity> alertEntities = new LinkedList<>();
 
-    public static List<AlertEntity> getAlertEntityList() {
-        return alertEntityList;
+    @Override
+    public List<AlertEntity> getAlertEntities() {
+        return alertEntities;
     }
 
     @Override
     public AlertEntity createAlert(AlertEntity alertEntity) {
 
-        alertEntity.setId(alertEntityList.size() + 1);
-        alertEntityList.add(alertEntity);
+        alertEntity.setId(alertEntities.size() + 1);
+        alertEntities.add(alertEntity);
 
         return alertEntity;
     }
 
     @Override
-    public List<AlertEntity> updateAlerts(List<AlertEntity> modifiedAlertEntityList) {
+    public List<AlertEntity> updateAlerts(List<AlertEntity> modifiedAlertEntities) {
 
-        for(AlertEntity alertEntity : alertEntityList){
-            for(AlertEntity modifiedAlertEntity : modifiedAlertEntityList){
-                if(alertEntity.getId() == modifiedAlertEntity.getId()){
+        for (AlertEntity alertEntity : alertEntities) {
+            for (AlertEntity modifiedAlertEntity : modifiedAlertEntities) {
+                if (alertEntity.getId() == modifiedAlertEntity.getId()) {
                     alertEntity.setReplicated(modifiedAlertEntity.isReplicated());
                 }
             }
         }
 
-        return modifiedAlertEntityList;
+        return modifiedAlertEntities;
     }
 
 
     @Override
     public List<AlertEntity> findNotReplicatedAlerts() {
 
-        return alertEntityList.stream()
-                .filter(e -> (e.isReplicated() == false))
+        return alertEntities.stream()
+                .filter(e -> !e.isReplicated())
                 .collect(Collectors.toList());
     }
 

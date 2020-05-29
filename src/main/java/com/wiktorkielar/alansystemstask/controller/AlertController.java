@@ -1,6 +1,6 @@
 package com.wiktorkielar.alansystemstask.controller;
 
-import com.wiktorkielar.alansystemstask.model.AlertDto;
+import com.wiktorkielar.alansystemstask.model.AlertEntity;
 import com.wiktorkielar.alansystemstask.model.AlertRequest;
 import com.wiktorkielar.alansystemstask.service.main.AlertMainService;
 import org.modelmapper.ModelMapper;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "${alertcontroller.requestmapping.value}")
+@RequestMapping("${alertcontroller.requestmapping.value}")
 public class AlertController {
 
     private AlertMainService alertMainService;
@@ -30,8 +30,8 @@ public class AlertController {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
-        AlertDto alertDto = modelMapper.map(alertRequest, AlertDto.class);
-        alertMainService.create(alertDto);
+        AlertEntity alertEntity = modelMapper.map(alertRequest, AlertEntity.class);
+        alertMainService.create(alertEntity);
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

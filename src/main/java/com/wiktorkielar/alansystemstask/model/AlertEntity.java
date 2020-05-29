@@ -7,6 +7,23 @@ public class AlertEntity {
     private String message;
     private int code;
 
+    public AlertEntity() {
+    }
+
+    public AlertEntity(int id, boolean replicated, String message, int code) {
+        this.id = id;
+        this.replicated = replicated;
+        this.message = message;
+        this.code = code;
+    }
+
+    public AlertEntity(AlertEntity alertEntity) {
+        this.id = alertEntity.getId();
+        this.replicated = alertEntity.isReplicated();
+        this.message = alertEntity.getMessage();
+        this.code = alertEntity.getCode();
+    }
+
     public int getId() {
         return id;
     }
